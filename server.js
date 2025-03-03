@@ -7,7 +7,11 @@ require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 // ✅ Allow CORS from all origins (temporary, update for production)
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL || "http://localhost:3000",
+  })
+);
 
 // Middleware
 app.use(express.json()); // Enables parsing of JSON body in requests
