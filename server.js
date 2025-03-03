@@ -9,7 +9,10 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 // ✅ Allow CORS from all origins (temporary, update for production)
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:3000",
+    origin: ["https://ragnarcart.netlify.app"],
+    methods: ["GET", "POST"], // Allow required methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Allow required headers
+    credentials: true, // Enable if you're using cookies or authentication
   })
 );
 
